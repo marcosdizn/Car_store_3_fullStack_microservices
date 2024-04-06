@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">BUSCAR COMPRAS</span>
+                    <form class="mt-3" [formGroup]="buscarForm" >
+                        <div class = "mb-3">
+                            <input type="text" formControlName="id_usuario" class="form-control form-control-lg" placeholder="id de usuario" >
+                        </div>
+                        <div class="text-danger"
+                              *ngIf="buscarForm.get('id_usuario')?.hasError('required') && buscarForm.get('id_usuario')?.touched">
+                              <span>Campo <strong>obligatorio</strong></span>
+                        </div> 
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="opcion" type="radio" name="opcion"
+                                    id="inlineRadio1" value="id">
+                                <label class="form-check-label" for="inlineRadio1">Buscar por ID de Compra</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" formControlName="opcion" type="radio" name="opcion"
+                                    id="inlineRadio2" value="NombreCliente">
+                                <label class="form-check-label" for="inlineRadio2">Buscar por Nombre Cliente</label>
+                            </div>
+                            <input type="text" formControlName="texto" class="form-control form-control-lg"
+                                placeholder="Texto">
+                            <div class="text-danger"
+                                *ngIf="buscarForm.get('texto')?.hasError('required') && buscarForm.get('texto')?.touched">
+                                <span>Campo <strong>obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                            <button type="submit" [routerLink]="['/buscar-compras',this.buscarForm.get('id_usuario')?.value, this.buscarForm.get('opcion')?.value, this.buscarForm.get('texto')?.value]" [disabled]="buscarForm.invalid"
+                                class="btn btn-success btn-lg float-end">BUSCAR</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

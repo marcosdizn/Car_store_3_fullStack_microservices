@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">{{ titulo | uppercase }}</span>
+          <form class="mt-3" [formGroup]="cocheForm" (ngSubmit)="agregarCoche()">
+            <div class = "mb-3">
+              <input type="text" formControlName="id_usuario"  class="form-control form-control-lg" placeholder="id de usuario" >
+              <div class="text-danger"
+              *ngIf="cocheForm.get('id_usuario')?.hasError('required') && cocheForm.get('id_usuario')?.touched">
+              <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="marca" class="form-control form-control-lg" placeholder="Marca">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('marca')?.hasError('required') && cocheForm.get('marca')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="modelo" class="form-control form-control-lg" placeholder="Modelo">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('modelo')?.hasError('required') && cocheForm.get('modelo')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="number" formControlName="potencia" class="form-control form-control-lg"
+                placeholder="Potencia">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('potencia')?.hasError('required') && cocheForm.get('potencia')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="combustible" class="form-control form-control-lg"
+                placeholder="Combustible">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('combustible')?.hasError('required') && cocheForm.get('combustible')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="traccion" class="form-control form-control-lg" placeholder="Tracción">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('traccion')?.hasError('required') && cocheForm.get('traccion')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="number" formControlName="cantidad" class="form-control form-control-lg"
+                placeholder="Cantidad">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('cantidad')?.hasError('required') && cocheForm.get('cantidad')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="number" formControlName="precio" class="form-control form-control-lg" placeholder="Precio">
+              <div class="text-danger"
+                *ngIf="cocheForm.get('precio')?.hasError('required') && cocheForm.get('precio')?.touched">
+                <span>Campo <strong>obligatorio</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+              <button type="submit" [disabled]="cocheForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

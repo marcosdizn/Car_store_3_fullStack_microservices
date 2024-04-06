@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-9 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                   <span class="titulo">{{ titulo | uppercase }}</span>
+                   <form class="mt-3" [formGroup]="listaForm">  
+                    <button type="submit" class="btn btn-success float-end" style="margin:5px" [routerLink]="['/buscar-usuarios', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid">BUSCAR</button>
+                    <button class="btn btn-success float-end" style="margin:5px" routerLink="/crear-usuario" >NUEVO</button>
+                    <button type="submit" class="btn btn-success float-end" style="margin:5px" [routerLink]="['/listar-usuarios', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid">LISTAR</button>
+                    <button type="submit" (click)="eliminarUsuario(this.listaForm.get('id_usuario')?.value)"  class= "btn btn-danger float-end" style="margin:5px" [disabled]="listaForm.invalid">ELIMINAR</button>
+                    <div class = "form-outline w-50">
+                      <input type="text" formControlName="id_usuario" class="form-control form-control-lg" placeholder="id de usuario" >
+                    </div>
+                    <div class="text-danger" style="text-align: start;"
+                        *ngIf="listaForm.get('id_usuario')?.hasError('required') && listaForm.get('id_usuario')?.touched">
+                        <span>Campo <strong>obligatorio</strong></span>
+                      </div>
+                    <table *ngIf="listUsuarios.length > 0" class="table table-striped mt-3"><!-- solo mostramos la tabla si tiene usuarios -->
+                    <table class="table table-striped mt-3">
+                      <thead>
+                        <tr> 
+                          <th scope="col">ID</th>
+                          <th scope="col">Rol</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let usuario of listUsuarios"> <!-- accedemos a cada usuario de la lista -->
+                          <td>{{ usuario._id }}</td>
+                          <td>{{ usuario.rol }}</td> <!-- accedemos al atributo de cada usuario -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </table>
+                    <br>
+                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listUsuarios.length == 0">No hay usuarios para mostrar</h5> 
+                    <div class="mb-3">
+                      <button routerLink="/" class="btn btn-secondary btn-lg float-start" >VOLVER</button>       
+                  </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

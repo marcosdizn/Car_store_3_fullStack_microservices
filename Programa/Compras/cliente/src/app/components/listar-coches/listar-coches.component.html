@@ -1,0 +1,57 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-9 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                   <span class="titulo">{{ titulo | uppercase }}</span>
+                   <form class="mt-3" [formGroup]="listaForm">  
+                    <button class="btn btn-success float-end" style="margin:5px" [routerLink]="['/buscar-coches', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid" >BUSCAR COCHES</button>
+                    <button class="btn btn-success float-end" style="margin:5px" [routerLink]="['/buscar-compras', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid" >BUSCAR COMPRAS</button>
+                    <button type="submit" class="btn btn-success float-end" style="margin:5px" [routerLink]="['/listar-coches', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid">LISTAR COCHES</button>
+                    <button type="submit" class="btn btn-success float-end" style="margin:5px" [routerLink]="['/listar-compras', this.listaForm.get('id_usuario')?.value]" [disabled]="listaForm.invalid">LISTAR COMPRAS</button>
+                    <div class = "form-outline w-50" >
+                      <input type="text" formControlName="id_usuario" class="form-control form-control-lg" placeholder="id de usuario" >
+                    </div>
+                    <div class="text-danger" style="text-align: start;"
+                        *ngIf="listaForm.get('id_usuario')?.hasError('required') && listaForm.get('id_usuario')?.touched">
+                        <span>Campo <strong>obligatorio</strong></span>
+                      </div>
+                    <table *ngIf="listCoches.length > 0" class="table table-striped mt-3">
+                      <thead>
+                        <tr>
+                          <th scope="col">Marca</th>
+                          <th scope="col">Modelo</th>
+                          <th scope="col">Potencia</th>
+                          <th scope="col">Combustible</th>
+                          <th scope="col">Tracción</th>
+                          <th scope="col">Cantidad</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let coche of listCoches">
+                          <td>{{ coche.marca }}</td>
+                          <td>{{ coche.modelo }}</td>
+                          <td>{{ coche.potencia }} CV</td>
+                          <td>{{ coche.combustible }}</td>
+                          <td>{{ coche.traccion }}</td>
+                          <td>{{ coche.cantidad }}</td>
+                          <td>{{ coche.precio | currency: 'EUR' }}</td>
+                          <td>                            
+                              <button type="submit" [routerLink]="['/comprar-coches', coche._id, this.listaForm.get('id_usuario')?.value]" style="color: #1c71d8;" [disabled]="listaForm.invalid" class="fa-solid fa-cart-shopping"></button>
+                            </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listCoches.length == 0">No hay coches para mostrar</h5> 
+                    <div class="mb-3">
+                      <button routerLink="/" class="btn btn-secondary btn-lg float-start" >VOLVER</button>       
+                  </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
