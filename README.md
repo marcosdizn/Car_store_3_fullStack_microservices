@@ -1,4 +1,4 @@
-# Car Store - AST
+# Car Store
 
 ## Introduction
 Welcome to the **Car Store** project. This application provides a complete solution for managing cars, users, and purchases with a structured role-based access system.
@@ -25,4 +25,8 @@ To get started with the project, follow these steps:
 git clone https://github.com/marcosdizn/Car_store_3_fullStack_microservices.git
 cd Car_store_3_fullStack_microservices
 npm install  
-npm start  
+npm start
+```
+
+## Development Server
+Run `ng serve` for a dev server. Navigate to [http://localhost:4200/](http://localhost:4200/). The application will automatically reload if you change any of the source files.
