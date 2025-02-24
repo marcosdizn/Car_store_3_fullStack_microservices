@@ -1,43 +1,73 @@
-# Car Store - AST
+- [Algoritmo-Ricart-Agrawala](#algoritmo-ricart-agrawala)
+  - [Herramientas](#herramientas)
+  - [ERRORES](#errores)
+    - [MEMORIA COMPARTIDA](#memoria-compartida)
+    - [BUZONES](#buzones)
+- [Nuestros procesos](#nuestros-procesos)
+  - [PAGOS ANULACION](#pagos-anulacion)
+  - [ADMINISTRACIÓN Y RESERVAS](#administración-y-reservas)
+  - [CONSULTAS](#consultas)
+  - [BINARIOS](#binarios)
+# Algoritmo-Ricart-Agrawala
 
-## Introduction
-Welcome to the **Car Store** project, developed as part of the AST Course 2022/2023 at TELECO UVigo. This application provides a complete solution for managing cars, users, and purchases with a structured role-based access system.
+En esta práctica hablaremos sobre el algoritmo `Ricart-Agrawala` para proteger secciones seciones críticas de procesos que están distribuidos
 
-## Features
+## Herramientas
 
-### Article Management (Admin Only)
-- Admin users can **list, create, search, edit, and delete** articles.
-- Authentication required: User ID must be provided with each request.
-- Search functionality by **Article ID** and **Brand**.
+Vamos a usar varios tipos de herramientas con las que se debe tener una cierta base 
+- Hilos
+- Paso de mensajes
+- Semáforos
 
-### User Management (Admin & Customers)
-- Admins and customers can **list, create, and search** users.
-- Admins can **delete users**, while customers can only create new accounts.
 
-### Purchase Management (Customers Only)
-- Customers can **list purchases and available cars**, as well as **search, buy, edit, and delete** purchases.
-- Authentication required: User ID must be provided with each request.
-
-## Installation & Setup
+## ERRORES
+### MEMORIA COMPARTIDA
+En caso de que no funcione bien los semaforos o la memoria compartida
+Comprobar si la memoria compartida ya existe
 ```bash
- git clone https://github.com/your-repository/car-store.git
- cd car-store
- npm install  # or the respective package manager
- npm start  # or the relevant command
+ipcs -m
+```
+En caso de que exista la que ya tenemos creada la eliminamos con el comando:
+```bash
+ipcrm -m ID_MEMORIA_COMPARTIDA
+```
+El id de la memoria compartida se ve con el anterior comando y a ejecutar algun programa te lo muestra por pantalla
+
+### BUZONES 
+Es parecido a con memoria compartida. Tenemos que comprobar si existe el buzon y en ese caso eliminarlo
+Este comando nos devuelve una lista con los buzones que estan en el sisteme. No debería haber ninguno
+```bash
+ipcs -q
 ```
 
-## Development Server
-Run `ng serve` for a dev server. Navigate to [http://localhost:4200/](http://localhost:4200/). The application will automatically reload if you change any of the source files.
+El comando para eliminarlos será:
+```bash
+ipcrm -q ID_BUZON
+```
+Al igual que antes el id del buzon lo imprime el programa recibir
 
-## Future Improvements
-- Implement enhanced **security features**.
-- Add **payment gateway integration**.
-- Improve **UI/UX** for better user experience.
 
-## Contributors
-- **Pedro Dacuña González**
-- **Fernando Fernandez Liberato**
-- **Marcos Diz Novoa**
+<!-- # Funcionamiento
+## Recibir
+El proceso recivir recibirá el mensaje
+```c
 
-## License
-This project is licensed under the **MIT License**.
+``` -->
+
+# Nuestros procesos
+Tendremos creados los siguientes programas
+## PAGOS ANULACION
+Los procesos de pagos y anulacioens tienen la misma prioridad por lo que su código será el mismo [pagos.c](procesos/pagos.c)
+
+## ADMINISTRACIÓN Y RESERVAS
+Los procesos de administracion y reservas tienen la misma prioridad por lo que su código será el mismo [administracion.c](procesos/administracion.c)
+
+## CONSULTAS 
+Este código debe ser único por eso solo tendrá el fichero [consultas.c](procesos/consultas.c)
+
+
+## BINARIOS
+En los binarios si que tendremos los ejecutables de los distintos procesos que se crearan autamaticamente ejecutando el scritp ejecutar.sh
+```bash
+./ejecutar.sh
+```
