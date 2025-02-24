@@ -1,73 +1,70 @@
-- [Algoritmo-Ricart-Agrawala](#algoritmo-ricart-agrawala)
-  - [Herramientas](#herramientas)
-  - [ERRORES](#errores)
-    - [MEMORIA COMPARTIDA](#memoria-compartida)
-    - [BUZONES](#buzones)
-- [Nuestros procesos](#nuestros-procesos)
-  - [PAGOS ANULACION](#pagos-anulacion)
-  - [ADMINISTRACIÓN Y RESERVAS](#administración-y-reservas)
-  - [CONSULTAS](#consultas)
-  - [BINARIOS](#binarios)
-# Algoritmo-Ricart-Agrawala
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Store - AST</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Store - AST</h1>
+    <h2>Introduction</h2>
+    <p>Welcome to the <strong>Car Store</strong> project. This application provides a complete solution for managing cars, users, and purchases with a structured role-based access system.</p>
+    
+    <h2>Features</h2>
+    <h3>Article Management (Admin Only)</h3>
+    <ul>
+        <li>Admin users can <strong>list, create, search, edit, and delete</strong> articles.</li>
+        <li>Authentication required: User ID must be provided with each request.</li>
+        <li>Search functionality by <strong>Article ID</strong> and <strong>Brand</strong>.</li>
+    </ul>
 
-En esta práctica hablaremos sobre el algoritmo `Ricart-Agrawala` para proteger secciones seciones críticas de procesos que están distribuidos
+    <h3>User Management (Admin & Customers)</h3>
+    <ul>
+        <li>Admins and customers can <strong>list, create, and search</strong> users.</li>
+        <li>Admins can <strong>delete users</strong>, while customers can only create new accounts.</li>
+    </ul>
 
-## Herramientas
+    <h3>Purchase Management (Customers Only)</h3>
+    <ul>
+        <li>Customers can <strong>list purchases and available cars</strong>, as well as <strong>search, buy, edit, and delete</strong> purchases.</li>
+        <li>Authentication required: User ID must be provided with each request.</li>
+    </ul>
 
-Vamos a usar varios tipos de herramientas con las que se debe tener una cierta base 
-- Hilos
-- Paso de mensajes
-- Semáforos
+    <h2>Installation & Setup</h2>
+    <pre>
+    git clone https://github.com/marcosdizn/Car_store_3_fullStack_microservices.git
+    cd Car_store_3_fullStack_microservices
+    npm install  
+    npm start  
+    </pre>
 
+    <h2>Development Server</h2>
+    <p>Run <code>ng serve</code> for a dev server. Navigate to <a href="http://localhost:4200/">http://localhost:4200/</a>. The application will automatically reload if you change any of the source files.</p>
+    
+    <h2>Future Improvements</h2>
+    <ul>
+        <li>Implement enhanced <strong>security features</strong>.</li>
+        <li>Add <strong>payment gateway integration</strong>.</li>
+        <li>Improve <strong>UI/UX</strong> for better user experience.</li>
+    </ul>
 
-## ERRORES
-### MEMORIA COMPARTIDA
-En caso de que no funcione bien los semaforos o la memoria compartida
-Comprobar si la memoria compartida ya existe
-```bash
-ipcs -m
-```
-En caso de que exista la que ya tenemos creada la eliminamos con el comando:
-```bash
-ipcrm -m ID_MEMORIA_COMPARTIDA
-```
-El id de la memoria compartida se ve con el anterior comando y a ejecutar algun programa te lo muestra por pantalla
-
-### BUZONES 
-Es parecido a con memoria compartida. Tenemos que comprobar si existe el buzon y en ese caso eliminarlo
-Este comando nos devuelve una lista con los buzones que estan en el sisteme. No debería haber ninguno
-```bash
-ipcs -q
-```
-
-El comando para eliminarlos será:
-```bash
-ipcrm -q ID_BUZON
-```
-Al igual que antes el id del buzon lo imprime el programa recibir
-
-
-<!-- # Funcionamiento
-## Recibir
-El proceso recivir recibirá el mensaje
-```c
-
-``` -->
-
-# Nuestros procesos
-Tendremos creados los siguientes programas
-## PAGOS ANULACION
-Los procesos de pagos y anulacioens tienen la misma prioridad por lo que su código será el mismo [pagos.c](procesos/pagos.c)
-
-## ADMINISTRACIÓN Y RESERVAS
-Los procesos de administracion y reservas tienen la misma prioridad por lo que su código será el mismo [administracion.c](procesos/administracion.c)
-
-## CONSULTAS 
-Este código debe ser único por eso solo tendrá el fichero [consultas.c](procesos/consultas.c)
-
-
-## BINARIOS
-En los binarios si que tendremos los ejecutables de los distintos procesos que se crearan autamaticamente ejecutando el scritp ejecutar.sh
-```bash
-./ejecutar.sh
-```
+</body>
+</html>
