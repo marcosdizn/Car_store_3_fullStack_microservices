@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Store - AST</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Store - AST</h1>
+    <h2>Introduction</h2>
+    <p>Welcome to the <strong>Car Store</strong> project. This application provides a complete solution for managing cars, users, and purchases with a structured role-based access system.</p>
+    
+    <h2>Features</h2>
+    <h3>Article Management (Admin Only)</h3>
+    <ul>
+        <li>Admin users can <strong>list, create, search, edit, and delete</strong> articles.</li>
+        <li>Authentication required: User ID must be provided with each request.</li>
+        <li>Search functionality by <strong>Article ID</strong> and <strong>Brand</strong>.</li>
+    </ul>
+
+    <h3>User Management (Admin & Customers)</h3>
+    <ul>
+        <li>Admins and customers can <strong>list, create, and search</strong> users.</li>
+        <li>Admins can <strong>delete users</strong>, while customers can only create new accounts.</li>
+    </ul>
+
+    <h3>Purchase Management (Customers Only)</h3>
+    <ul>
+        <li>Customers can <strong>list purchases and available cars</strong>, as well as <strong>search, buy, edit, and delete</strong> purchases.</li>
+        <li>Authentication required: User ID must be provided with each request.</li>
+    </ul>
+
+    <h2>Installation & Setup</h2>
+    <pre>
+    git clone https://github.com/marcosdizn/Car_store_3_fullStack_microservices.git
+    cd Car_store_3_fullStack_microservices
+    npm install  
+    npm start  
+    </pre>
+
+    <h2>Development Server</h2>
+    <p>Run <code>ng serve</code> for a dev server. Navigate to <a href="http://localhost:4200/">http://localhost:4200/</a>. The application will automatically reload if you change any of the source files.</p>
+    
+    <h2>Future Improvements</h2>
+    <ul>
+        <li>Implement enhanced <strong>security features</strong>.</li>
+        <li>Add <strong>payment gateway integration</strong>.</li>
+        <li>Improve <strong>UI/UX</strong> for better user experience.</li>
+    </ul>
+
+</body>
+</html>
